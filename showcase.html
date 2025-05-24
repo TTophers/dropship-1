@@ -9,6 +9,7 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
   </style>
+  <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body class="bg-white text-gray-800">
     <div class="fixed top-0 left-0 w-full bg-green-600 text-white text-center py-3 text-lg font-semibold z-50 animate-pulse shadow-md">
@@ -48,10 +49,44 @@
             <p class="text-green-600 font-medium mt-1">+ Free Shipping</p>
           </div>
 
-          <button class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition">
+          <button id="buy-now-btn" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition">
             Purchase Now!
           </button>
           <p class="text-sm text-gray-500 mt-2 italic">*only 3 spots left</p>
         </div>
       </div>
     </section>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      const stripe = Stripe("pk_test_YOUR_PUBLISHABLE_KEY"); // Replace with your publishable key
+    
+      document.getElementById("buy-now-btn").addEventListener("click", () => {
+        fetch("/api/create-checkout-session", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data.error){
+            alert(data.error);
+            return;
+          }
+          return stripe.redirectToCheckout({ sessionId: data.id });
+        })
+        .then(result => {
+          if(result.error) {
+            alert(result.error.message);
+          }
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          alert("Failed to create checkout session");
+        });
+      });
+    </script>
+    <script src="system.js"></script>
+</body>
+</html>
