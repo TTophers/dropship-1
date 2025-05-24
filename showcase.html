@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <div class="fixed top-0 left-0 w-full bg-green-600 text-white text-center py-3 text-lg font-semibold z-50 animate-pulse shadow-md">
+      🎉 First 10 Customers Get 50% Off – Act Fast! 🎉
+    </div>
+    
+    <!-- Spacer so the content doesn't hide under banner -->
+    <div class="h-14"></div>
+    <!-- Back Link -->
+    <div class="p-4">
+      <a href="landing.html" class="text-blue-600 hover:underline">← Back to Home</a>
+    </div>
+  
+    <!-- Product Detail Section -->
+    <section class="py-16 px-4 bg-gray-50 min-h-screen">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 items-start">
+        <div class="w-full lg:w-1/2">
+          <img src="IMG_2498.jpg" alt="Product Image" class="rounded-xl shadow-md w-full">
+        </div>
+  
+        <div class="w-full lg:w-1/2">
+          <h1 class="text-4xl font-bold mb-4">Security Dragon Leash</h1>
+          <p class="text-gray-600 mb-4">Designed with comfort and charisma in mind, this bearded dragon vest blends soft, breathable fabric — think silky-smooth on scales — with an undeniably bold look. The ‘Security’ badge adds a playful twist, making your dragon look like the bouncer of the reptile world. Whether you’re headed to the park, a pet expo, or just hanging out at home, this vest turns your little sidekick into the star of the show.</p>
+  
+          <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+            <li>Made from pure cotton</li>
+            <li>High-durability Velcro</li>
+            <li>Super easy to put on</li>
+            <li>Very strong leash</li>
+          </ul>
+  
+          <div class="mb-6">
+            <div class="flex items-baseline gap-4">
+              <span class="text-xl text-red-500 line-through">$19.99</span>
+              <span class="text-3xl font-semibold text-green-600">$9.99</span>
+            </div>
+            <p class="text-green-600 font-medium mt-1">+ Free Shipping</p>
+          </div>
+
+          <button class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition">
+            Purchase Now!
+          </button>
+          <p class="text-sm text-gray-500 mt-2 italic">*only 3 spots left</p>
+        </div>
+      </div>
+    </section>
