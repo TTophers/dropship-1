@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me - Dragon Gear</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200 text-gray-800">
+
+  <!-- Banner (optional, same as homepage) -->
+  <div class="fixed top-0 left-0 w-full bg-green-600 text-white text-center py-3 text-lg font-semibold z-50 animate-pulse shadow-md">
+    🎉 First 10 Customers Get 50% Off – Act Fast! 🎉
+  </div>
+  <div class="h-14"></div>
+
+  <!-- Contact Section -->
+  <section class="py-16 px-4 min-h-screen flex items-center justify-center">
+    <form id="contact" method="POST"  class="space-y-4 bg-blue-200 p-8 rounded-xl shadow-md w-full max-w-md">
+      <h1 class="text-3xl font-bold mb-6 text-center">Contact Me</h1>
+      
+      <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border rounded" />
+      <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border rounded" />
+      <textarea name="message" placeholder="Your Message" required class="w-full p-3 border rounded h-32"></textarea>
+      
+      <button type="submit" class="w-full bg-blue-600 text-white px-4 py-3 rounded hover:bg-blue-700 transition">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+<!-- JS for form submission -->
+<script>
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const form = e.target
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (res.ok) {
+        // Redirect to thank-you page
+        window.location.href = '/thanks.html'
+      } else {
+        const errorText = await res.text()
+        alert('Error: ' + errorText)
+      }
+    } catch (err) {
+      console.error('Submission failed:', err)
+      alert('There was a problem submitting your form.')
+    }
+  }
+
+  document.getElementById('contact').addEventListener('submit', handleSubmit)
+</script>
+</body>
+</html>
