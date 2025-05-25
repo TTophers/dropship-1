@@ -31,8 +31,8 @@ module.exports = async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.origin}/success.html`,
-      cancel_url: `${req.headers.origin}/cancel.html`,
+      success_url: `${req.headers.origin}/showcase.html`,
+      cancel_url: `${req.headers.origin}/showcase.html`,
     });
 
     // Send the session ID back to frontend
