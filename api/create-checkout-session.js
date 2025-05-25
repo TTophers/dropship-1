@@ -39,5 +39,6 @@ module.exports = async (req, res) => {
     res.status(200).json({ id: session.id });
   } catch (error) {
     res.status(500).json({ error: error.message });
+    console.error("Stripe session error:", error);
   }
 };
