@@ -23,5 +23,10 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# Vercel build output (optional if you use custom output)
-.vercel/
+# Dependencies
+node_modules
+
+# Build output
+.next
+dist
+
